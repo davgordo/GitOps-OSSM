@@ -6,33 +6,33 @@ Do not use the `base` directory directly, as you will need to patch the `channel
 
 ## Provision Service Mesh with the CLI
 
-TIP: Commands shown are show from the root of a clone of this Git repository.
+TIP: Commands are shown from the root of a clone of this Git repository.
 
-Install the OpenShift Elasticsearch operator
+Install the OpenShift Elasticsearch operator:
 
 ```
 oc apply -k elasticsearch-operator/overlays/stable
 ```
 
-Install the OpenShift Distributed Tracing operator
+Install the OpenShift Distributed Tracing operator:
 
 ```
 oc apply -k openshift-distributed-tracing-operator/overlays/stable
 ```
 
-Install the Kiali operator
+Install the Kiali operator:
 
 ```
 oc apply -k kiali-operator/overlays/stable
 ```
 
-Install OpenShift Service Mesh
+Install OpenShift Service Mesh:
 
 ```
 oc apply -k openshift-servicemesh/operator/overlays/stable
 ```
 
-Configure the service mesh control plane
+Configure the service mesh control plane:
 
 ```
 oc apply -k openshift-servicemesh/instance/overlays/default
