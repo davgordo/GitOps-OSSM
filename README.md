@@ -1,17 +1,7 @@
-# OpenShift ServiceMesh - Control Plane
+# OpenShift ServiceMesh - Control Plane - Playbook
 
-Installs the Control Plane component of OpenShift ServiceMesh.
+This guide details the implemenation and configuration steps to setup OpenShift Service Mesh (OSSM) v2.1, including Control Plane and dependent components and operators.
 
-## Prerequisites
-
-First, install the following operators in your cluster:
-
-- [Openshift Elasticsearch Operator](../../elasticsearch-operator)
-- [Red Hat Openshift Jaeger Operator](../../jaeger-operator)
-- [Kiali Operator](../../kaili-operator)
-- [OpenShift ServiceMesh Operator](../operator)
-
-Review the [Service Mesh 2.0 Install](https://docs.openshift.com/container-platform/4.9/service_mesh/v2x/installing-ossm.html#jaeger-operator-install-elasticsearch_installing-ossm-v2x) documentation for information on specific versions of the operators to install for your cluster version.
 
 Do not use the `base` directory directly, as you will need to patch the `channel` based on the version of OpenShift you are using, or the version of the operator you want to use.
 
