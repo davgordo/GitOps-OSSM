@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: openshift-operators
 
 resources:
-  - tracing-operator-subscription.yaml
+  - tracing-subscription.yaml
