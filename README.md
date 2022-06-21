@@ -4,7 +4,7 @@ This guide details the implementation and configuration steps to setup OpenShift
 
 Do not use the `base` directory directly, as you will need to patch the `channel` based on the version of OpenShift you are using, or the version of the operator you want to use.
 
-## Provision Service Mesh with the CLI
+## Provision Service Mesh with the OpenShift CLI
 
 TIP: Commands are shown from the root of a clone of this Git repository.
 
