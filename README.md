@@ -1,33 +1,43 @@
-# OpenShift ServiceMesh - Control Plane - Playbook
+# GitOps-managed OpenShift ServiceMesh
 
-This guide details the implemenation and configuration steps to setup OpenShift Service Mesh (OSSM) v2.1, including Control Plane and dependent components and operators.
-
+This guide details the implementation and configuration steps to setup OpenShift Service Mesh (OSSM) v2.1, including Control Plane and dependent components and operators.
 
 Do not use the `base` directory directly, as you will need to patch the `channel` based on the version of OpenShift you are using, or the version of the operator you want to use.
 
-The current *overlays* available are:
-* [default](overlays/default)
+## Provision Service Mesh with the OpenShift CLI
 
-## Usage
+TIP: Commands are shown from the root of a clone of this Git repository.
 
-If you have cloned the `gitops-catalog` repository, you can install Noobaa by running from the root `gitops-catalog` directory
+Install the OpenShift Elasticsearch operator:
+
+```
+oc apply -k elasticsearch-operator/overlays/stable
+```
+
+Install the OpenShift Distributed Tracing operator:
+
+```
+oc apply -k openshift-distributed-tracing-operator/overlays/stable
+```
+
+Install the Kiali operator:
+
+```
+oc apply -k kiali-operator/overlays/stable
+```
+
+Install OpenShift Service Mesh:
+
+```
+oc apply -k openshift-servicemesh/operator/overlays/stable
+```
+
+Configure the service mesh control plane:
 
 ```
 oc apply -k openshift-servicemesh/instance/overlays/default
 ```
 
-Or, without cloning:
+## Provision Service Mesh with ArgoCD
 
-```
-oc apply -k https://github.com/redhat-cop/gitops-catalog/openshift-servicemesh/instance/overlays/default
-```
-
-As part of a different overlay in your own GitOps repo:
-
-```
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-bases:
-  - github.com/redhat-cop/gitops-catalog/openshift-servicemesh/instance/overlays/default?ref=main
-```
+TBD...
