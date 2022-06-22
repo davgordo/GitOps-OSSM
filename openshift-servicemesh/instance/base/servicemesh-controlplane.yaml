@@ -1,8 +1,11 @@
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
-  name: istio-system
+  name: prod-tenant-01
 spec:
+  security:
+    controlPlane:
+      mtls: true
   tracing:
     sampling: 10000
     type: Jaeger
@@ -15,9 +18,10 @@ spec:
     grafana:
       enabled: true
     jaeger:
+      name: simple-prod
       install:
         storage:
-          type: Memory
+          type: Elasticsearch
     kiali:
       enabled: true
     prometheus:
