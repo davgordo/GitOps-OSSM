@@ -3,23 +3,22 @@ kind: Jaeger
 metadata:
   name: simple-prod
 spec:
-      strategy: production
+  strategy: production
+  storage:
+    type: elasticsearch
+    elasticsearch:
+      nodeCount: 3
       storage:
-        type: elasticsearch
-        elasticsearch:
-          nodeCount: 3
-          storage: 
-            storageClassName: gp2
-            size: 50Gi      
-          resources:
-            requests:
-              cpu: 200m
-              memory: 4Gi
-            limits:
-              memory: 4Gi
-          redundancyPolicy: SingleRedundancy
-      collector:
-        replicas: 2
-      query:
-        replicas: 2   
-        
+        storageClassName: gp2
+        size: 50Gi
+      resources:
+        requests:
+          cpu: 200m
+          memory: 4Gi
+        limits:
+          memory: 4Gi
+      redundancyPolicy: SingleRedundancy
+  collector:
+    replicas: 2
+  query:
+    replicas: 2
