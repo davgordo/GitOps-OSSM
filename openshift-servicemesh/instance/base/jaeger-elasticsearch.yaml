@@ -1,7 +1,7 @@
 apiVersion: jaegertracing.io/v1
 kind: Jaeger
 metadata:
-  name: simple-prod
+  name: default
 spec:
   strategy: production
   storage:
@@ -19,6 +19,6 @@ spec:
           memory: 4Gi
       redundancyPolicy: SingleRedundancy
   collector:
-    replicas: 2
+    replicas: 1
   query:
-    replicas: 2
+    replicas: 1
