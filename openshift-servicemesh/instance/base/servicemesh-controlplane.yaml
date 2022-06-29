@@ -1,10 +1,12 @@
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
 metadata:
-  name: prod-tenant-01
+  name: prod-tenant-02
 spec:
   security:
     controlPlane:
+      mtls: true
+    dataPlane:
       mtls: true
   tracing:
     sampling: 10000
@@ -12,13 +14,37 @@ spec:
   gateways:
     openshiftRoute:
       enabled: true
+    ingress:
+          runtime:
+            deployment:
+              replicas: 3
+            container:
+              resources:
+                requests:
+                  cpu: 200m
+                  memory: 128Mi
+                limits:
+                  cpu: 400m
+                  memory: 256Mi
+    egress:
+          runtime:
+            deployment:
+              replicas: 1
+            container:
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 200m
+                  memory: 256Mi
   policy:
     type: Istiod
   addons:
     grafana:
       enabled: true
     jaeger:
-      name: simple-prod
+      name: jaeger-prod2
       install:
         storage:
           type: Elasticsearch
@@ -26,6 +52,6 @@ spec:
       enabled: true
     prometheus:
       enabled: true
-  version: v2.0
+  version: v2.1
   telemetry:
     type: Istiod
