@@ -10,5 +10,5 @@ patchesJson6902:
       version: v1alpha1
       kind: Subscription
       name: jaeger-product
-      namespace: openshift-operators
+      namespace: openshift-distributed-tracing
     path: patch-channel.yaml
