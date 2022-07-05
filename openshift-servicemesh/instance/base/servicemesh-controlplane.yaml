@@ -13,7 +13,7 @@ spec:
       install:
         storage:
           type: Elasticsearch
-      name: default
+      name: basic
     kiali:
       enabled: true
     prometheus:
