@@ -1,58 +1,60 @@
---- 
+---
 apiVersion: maistra.io/v2
 kind: ServiceMeshControlPlane
-metadata: 
+metadata:
   name: basic
-spec: 
-  addons: 
-    grafana: 
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  addons:
+    grafana:
       enabled: true
-    jaeger: 
-      install: 
-        storage: 
+    jaeger:
+      install:
+        storage:
           type: Elasticsearch
       name: default
-    kiali: 
+    kiali:
       enabled: true
-    prometheus: 
+    prometheus:
       enabled: true
   gateways: 
-    egress: 
-      runtime: 
-        container: 
-          resources: 
-            limits: 
+    egress:
+      runtime:
+        container:
+          resources:
+            limits:
               cpu: 200m
               memory: 256Mi
-            requests: 
+            requests:
               cpu: 100m
               memory: 128Mi
-        deployment: 
+        deployment:
           replicas: 1
-    ingress: 
-      runtime: 
-        container: 
-          resources: 
-            limits: 
+    ingress:
+      runtime:
+        container:
+          resources:
+            limits:
               cpu: 400m
               memory: 256Mi
-            requests: 
+            requests:
               cpu: 200m
               memory: 128Mi
-        deployment: 
+        deployment:
           replicas: 1
-    openshiftRoute: 
+    openshiftRoute:
       enabled: true
-  policy: 
+  policy:
     type: Istiod
-  security: 
-    controlPlane: 
+  security:
+    controlPlane:
       mtls: true
-    dataPlane: 
+    dataPlane:
       mtls: true
-  telemetry: 
+  telemetry:
     type: Istiod
-  tracing: 
+  tracing:
     sampling: 10000
     type: Jaeger
   version: v2.1
