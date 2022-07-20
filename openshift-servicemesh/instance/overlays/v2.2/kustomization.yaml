@@ -11,4 +11,4 @@ patchesJson6902:
       kind: ServiceMeshControlPlane
       name: basic
       namespace: istio-system
-    path: patch-channel.yaml
+    path: patch-smcp-release.yaml
