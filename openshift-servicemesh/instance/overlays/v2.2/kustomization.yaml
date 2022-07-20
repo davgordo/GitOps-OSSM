@@ -6,6 +6,8 @@ bases:
 
 patchesJson6902:
   - target:
+      group: maistra.io
+      version: v2
       kind: ServiceMeshControlPlane
       name: basic
       namespace: istio-system
