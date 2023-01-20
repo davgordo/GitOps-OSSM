@@ -10,5 +10,4 @@ patchesJson6902:
       version: v2
       kind: ServiceMeshControlPlane
       name: basic
-      namespace: istio-system
     path: patch-smcp-release.yaml
