@@ -32,10 +32,11 @@ Install OpenShift Service Mesh:
 oc apply -k openshift-servicemesh/operator/overlays/stable
 ```
 
-Configure the service mesh control plane:
+Configure the service mesh control plane (for example in the `istio-system` namespace):
 
 ```
-oc apply -k openshift-servicemesh/instance/overlays/default
+oc new-project istio-system
+oc apply -k openshift-servicemesh/instance/overlays/default -n istio-system
 ```
 
 ## How to use this library
@@ -53,5 +54,7 @@ resources:
   - https://github.com/RHC-STP-OSSM/GitOps-OSSM/openshift-servicemesh/operator/overlays/stable
   - https://github.com/RHC-STP-OSSM/GitOps-OSSM/openshift-servicemesh/instance/overlays/default
 ```
+
+Note: You will also need to create the namespace(s) where you decide to install the control place (e.g. `istio-system`)
 
 You may also want to supplement, overwrite, or merge your own configuration along with the artifacts from this library. An [example repository](https://github.com/RHC-STP-OSSM/cluster-gitops) is provided that can be used as a starting point for managing a cluster using these core templates. The example repository contains a reference `kustomization` and ArgoCD `Application`.
